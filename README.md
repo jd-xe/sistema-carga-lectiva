@@ -68,6 +68,12 @@ docker compose up --build
 * **API y Swagger Docs:** [http://localhost:8000/docs](http://localhost:8000/docs)
 * **Base de Datos (Interna):** Puerto `5432`
 
+## 📄 Formato de Documento Soportado
+
+El algoritmo de extracción heurística está calibrado para procesar los reportes tabulares oficiales de la institución. Para el correcto funcionamiento del módulo de subida, el archivo debe ser un PDF con texto seleccionable (no escaneado) que contenga la estructura de columnas: `N°`, `PROFESOR`, `ASIGNATURAS`, `E.P`, `CICLO`, `SEC`, `HT` y `HP`.
+
+> **💡 Prueba rápida:** En el directorio `ejemplos/` de este repositorio se incluye un documento PDF de prueba (`carga_lectiva_2026-II.pdf`) con 10 registros ficticios válidos para testear la extracción y visualización en el sistema.
+
 ## 🔒 Decisiones de Ingeniería y Arquitectura
 
 * **Extracción Tolerante a Fallos:** El procesador de PDFs detecta y unifica celdas fracturadas por saltos de línea irregulares, descartando mediante diccionarios heurísticos la "basura textual" (títulos como DOCTOR, MAGISTER, cargos administrativos) para persistir nombres puros en la base de datos.
